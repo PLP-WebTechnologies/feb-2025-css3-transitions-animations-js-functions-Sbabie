@@ -1,0 +1,30 @@
+// Handle animation on image
+const button = document.getElementById('animateBtn');
+const image = document.getElementById('box');
+
+button.addEventListener('click', () => {
+  image.classList.add('animate');
+  setTimeout(() => image.classList.remove('animate'), 1000);
+});
+
+// Theme toggle with localStorage
+const toggle = document.getElementById('themeToggle');
+const body = document.body;
+
+// Load preference
+const storedTheme = localStorage.getItem('theme');
+if (storedTheme === 'dark') {
+  body.classList.add('dark');
+  toggle.checked = true;
+}
+
+// Save preference
+toggle.addEventListener('change', () => {
+  if (toggle.checked) {
+    body.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    body.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
+  }
+});
